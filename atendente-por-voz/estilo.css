@@ -1,0 +1,38 @@
+:root {
+  --fundo: #faf7f2; --superficie: #ffffff; --tinta: #221c16; --tinta-2: #6b6158; --borda: #e4dcd1;
+  --marca: #b4421b; --marca-tinta: #ffffff; --bolha-cliente: #f1e7da;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --fundo: #171310; --superficie: #211c18; --tinta: #f2ece5; --tinta-2: #b3a89c; --borda: #3a322b;
+    --marca: #f0805a; --marca-tinta: #1d0f09; --bolha-cliente: #2e2621; color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fundo); color: var(--tinta); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+:focus-visible { outline: 3px solid var(--marca); outline-offset: 2px; }
+.tela { max-width: 640px; margin: 0 auto; padding: 32px 16px; min-height: 100dvh; display: flex; flex-direction: column; gap: 20px; }
+.loja { margin: 0; color: var(--tinta-2); font-size: 0.9375rem; }
+.aviso { font-size: 0.75rem; border: 1px solid var(--borda); border-radius: 999px; padding: 1px 8px; margin-left: 4px; }
+h1 { margin: 4px 0; font-size: 2rem; letter-spacing: -0.01em; }
+.dica { margin: 0; color: var(--tinta-2); }
+
+.microfone { display: grid; justify-items: center; gap: 8px; }
+#falar { display: grid; justify-items: center; gap: 6px; width: 148px; height: 148px; border-radius: 50%; border: 0; background: var(--marca); color: var(--marca-tinta); font: inherit; font-weight: 600; cursor: pointer; transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1); align-content: center; }
+#falar:active { transform: scale(0.96); }
+#falar[aria-pressed="true"] { animation: ouvindo 1.2s ease-in-out infinite; }
+@keyframes ouvindo { 50% { transform: scale(1.05); } }
+#falar:disabled { opacity: 0.5; cursor: not-allowed; }
+.status { margin: 0; color: var(--tinta-2); min-height: 1.5em; text-align: center; }
+
+.texto label { display: block; font-size: 0.875rem; color: var(--tinta-2); margin-bottom: 4px; }
+.linha { display: flex; gap: 8px; }
+.linha input { flex: 1; min-width: 0; font: inherit; font-size: 16px; color: var(--tinta); background: var(--superficie); border: 1px solid var(--borda); border-radius: 6px; padding: 10px 12px; min-height: 44px; }
+.linha button { font: inherit; border-radius: 6px; padding: 10px 16px; min-height: 44px; border: 1px solid var(--marca); background: transparent; color: var(--marca); cursor: pointer; }
+
+.conversa { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.conversa li { max-width: 85%; padding: 10px 14px; border-radius: 8px; animation: entrar 220ms cubic-bezier(0.23, 1, 0.32, 1); }
+.conversa .cliente { justify-self: end; background: var(--bolha-cliente); }
+.conversa .atendente { justify-self: start; background: var(--superficie); border: 1px solid var(--borda); }
+@keyframes entrar { from { opacity: 0; transform: translateY(6px); } }
+.rodape { margin-top: auto; color: var(--tinta-2); font-size: 0.8125rem; }
+@media (prefers-reduced-motion: reduce) { #falar, .conversa li { animation: none !important; transition: none; } }

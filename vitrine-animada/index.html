@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vitrine animada · animações com CSS keyframes</title>
+<link rel="icon" href="data:,">
+<meta name="description" content="Quatro animações de produto feitas só com CSS @keyframes, leves no celular e com o código ao lado.">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<svg width="0" height="0" class="defs" aria-hidden="true">
+  <symbol id="lata" viewBox="0 0 120 200">
+    <rect x="18" y="14" width="84" height="172" rx="14" fill="var(--lata)"/>
+    <rect x="26" y="6" width="68" height="14" rx="6" fill="var(--tampa)"/>
+    <rect x="26" y="180" width="68" height="12" rx="6" fill="var(--tampa)"/>
+    <rect x="18" y="70" width="84" height="54" fill="var(--faixa)"/>
+    <text x="60" y="103" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="17" fill="var(--lata)">LIMA</text>
+    <rect x="30" y="22" width="8" height="150" rx="4" fill="#fff" opacity=".25"/>
+  </symbol>
+</svg>
+
+<main class="pagina">
+  <header class="topo">
+    <h1>Vitrine animada</h1>
+    <p>Quatro jeitos de dar vida à foto de um produto <strong>só com CSS</strong>, sem biblioteca. Todos animam apenas <code>transform</code> e <code>opacity</code>, que o celular desenha sem travar. A marca "Lima" é fictícia.</p>
+    <button id="pausar" type="button" aria-pressed="false">Pausar animações</button>
+  </header>
+
+  <section class="vitrine" aria-label="Exemplos de animação">
+    <article class="card">
+      <div class="palco"><svg class="produto flutuar" viewBox="0 0 120 200" role="img" aria-label="Lata de refrigerante Lima flutuando"><use href="#lata"/></svg><div class="sombra flutuar-sombra"></div></div>
+      <h2>Flutuar</h2>
+      <p>O produto sobe e desce devagar, e a sombra encolhe junto. Bom para o topo de uma landing page.</p>
+      <details><summary>Ver o código</summary><pre><code>@keyframes flutuar {
+  50% { transform: translateY(-14px); }
+}
+.produto {
+  animation: flutuar 3s ease-in-out infinite;
+}</code></pre></details>
+    </article>
+
+    <article class="card">
+      <div class="palco"><svg class="produto entrar" viewBox="0 0 120 200" role="img" aria-label="Lata entrando na tela"><use href="#lata"/></svg></div>
+      <h2>Entrar</h2>
+      <p>O produto aparece subindo e crescendo um pouco, com uma curva que freia no fim. Faça a entrada uma vez, não em loop.</p>
+      <details><summary>Ver o código</summary><pre><code>@keyframes entrar {
+  from { opacity: 0; transform: translateY(24px) scale(.94); }
+}
+.produto {
+  animation: entrar .7s cubic-bezier(.23, 1, .32, 1) both;
+}</code></pre></details>
+      <button class="repetir" type="button" data-alvo="entrar">Repetir</button>
+    </article>
+
+    <article class="card">
+      <div class="palco brilho"><svg class="produto" viewBox="0 0 120 200" role="img" aria-label="Lata com um reflexo de luz passando"><use href="#lata"/></svg><span class="luz" aria-hidden="true"></span></div>
+      <h2>Reflexo</h2>
+      <p>Uma faixa de luz atravessa o produto de tempos em tempos. Chama a atenção sem cansar.</p>
+      <details><summary>Ver o código</summary><pre><code>@keyframes reflexo {
+  0%, 60% { transform: translateX(-120%) skewX(-20deg); }
+  100%    { transform: translateX(220%) skewX(-20deg); }
+}
+.luz { animation: reflexo 3.5s ease-in-out infinite; }</code></pre></details>
+    </article>
+
+    <article class="card">
+      <div class="palco"><svg class="produto girar" viewBox="0 0 120 200" role="img" aria-label="Lata girando em 3D"><use href="#lata"/></svg></div>
+      <h2>Girar em 3D</h2>
+      <p>O produto vira de um lado para o outro, como numa vitrine giratória. Usa <code>perspective</code> no pai.</p>
+      <details><summary>Ver o código</summary><pre><code>.palco { perspective: 600px; }
+@keyframes girar {
+  0%, 100% { transform: rotateY(-35deg); }
+  50%      { transform: rotateY(35deg); }
+}
+.produto { animation: girar 4s ease-in-out infinite; }</code></pre></details>
+    </article>
+  </section>
+
+  <footer class="rodape">Se o seu sistema estiver com "reduzir movimento" ligado, as animações começam pausadas. Projeto de portfólio da Penchel.Dev.</footer>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

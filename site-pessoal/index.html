@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enzo Penchel · Penchel.Dev</title>
+<meta name="description" content="Enzo Penchel, desenvolvedor. Sites e sistemas para pequenos negócios: estoque, agendamento, cardápio digital e automação.">
+<meta property="og:title" content="Enzo Penchel · Penchel.Dev">
+<meta property="og:description" content="Sites e sistemas para pequenos negócios.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<a class="pular" href="#projetos">Pular para os projetos</a>
+<header class="topo">
+  <nav class="nav" aria-label="Principal">
+    <a href="#" class="marca">Penchel.Dev</a>
+    <span class="links"><a href="#projetos">Projetos</a><a href="#rapidos">Projetos de um dia</a><a href="#contato">Contato</a></span>
+  </nav>
+  <div class="heroi">
+    <h1>Enzo Penchel</h1>
+    <p class="lead">Tenho 16 anos e faço sites e sistemas para pequenos negócios: controle de estoque, agendamento online, cardápio digital e ferramentas que ajudam a achar clientes.</p>
+    <p class="lead">Gosto de resolver o problema de verdade do dono do negócio, com código testado e seguro.</p>
+    <a class="botao" href="#projetos">Ver projetos</a>
+  </div>
+</header>
+
+<main>
+  <section id="projetos" class="secao" aria-labelledby="t-projetos">
+    <h2 id="t-projetos">Projetos</h2>
+    <p class="nota">Todos os negócios dos exemplos são fictícios. São projetos de portfólio.</p>
+    <ul class="projetos">
+      <li class="projeto">
+        <h3>StockFlow</h3>
+        <p>Controle de estoque para pequenos comércios. Cada loja só enxerga os próprios dados (Row Level Security no PostgreSQL). Tem uma demonstração sem cadastro.</p>
+        <p class="tags">Supabase · PostgreSQL · RLS · Vercel</p>
+        <p class="acoes"><a href="https://stock-flow-xi-indol.vercel.app">Abrir demonstração</a><a href="https://github.com/Engghgtytr/StockFlow">Código</a></p>
+      </li>
+      <li class="projeto">
+        <h3>Agendamento · Barbearia Alvorada</h3>
+        <p>O cliente escolhe serviço, barbeiro, dia e horário em menos de um minuto, sem criar conta. Dois clientes nunca ficam com o mesmo horário, garantido pelo próprio banco, com testes que provam isso.</p>
+        <p class="tags">PostgreSQL · exclusion constraint · testes</p>
+        <p class="acoes"><a href="https://github.com/Engghgtytr/agendamento-alvorada">Código</a></p>
+      </li>
+      <li class="projeto">
+        <h3>Chapa Sete · cardápio digital</h3>
+        <p>Cardápio no celular para uma hamburgueria: a pessoa monta a sacola e o pedido vira uma mensagem pronta no WhatsApp. O dono muda preço, foto e horário por um painel.</p>
+        <p class="tags">Vite · Supabase · WhatsApp</p>
+        <p class="acoes"><a href="https://github.com/Engghgtytr/cardapio-chapa-sete">Código</a></p>
+      </li>
+      <li class="projeto">
+        <h3>Quintal Verde</h3>
+        <p>Site de um restaurante vegano. O preço do pedido é sempre recalculado pelo cardápio, nunca confiando no que vem do navegador.</p>
+        <p class="tags">JavaScript · regras de negócio testadas</p>
+        <p class="acoes"><a href="https://github.com/Engghgtytr/quintal-verde">Código</a></p>
+      </li>
+      <li class="projeto">
+        <h3>Caçador de clientes</h3>
+        <p>Acha barbearias e restaurantes de uma cidade que não têm site, monta uma ficha de cada um e deixa uma mensagem pronta. Quem envia é a pessoa, uma de cada vez.</p>
+        <p class="tags">Python · pytest · executável para Windows</p>
+        <p class="acoes"><a href="https://github.com/Engghgtytr/cacador-de-clientes">Código</a></p>
+      </li>
+      <li class="projeto">
+        <h3>O Sindicato</h3>
+        <p>Laboratório para testar estratégias de trading no Nasdaq com honestidade: separa os dados de teste "cegos" para não se enganar. Nenhuma ordem real é enviada.</p>
+        <p class="tags">Python · backtest · estatística</p>
+        <p class="acoes"><a href="https://github.com/Engghgtytr/o-sindicato">Código</a></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="rapidos" class="secao" aria-labelledby="t-rapidos">
+    <h2 id="t-rapidos">Projetos de um dia</h2>
+    <p class="nota">Projetos curtos para treinar uma técnica de cada vez.</p>
+    <ul class="projetos">
+      <li class="projeto"><h3>Perto de Mim</h3><p>Acha pizzarias, cafés e barbearias de um bairro no mapa e mostra quais ainda não têm site.</p><p class="tags">OpenStreetMap · Leaflet</p><p class="acoes"><a href="../perto-de-mim/">Abrir</a></p></li>
+      <li class="projeto"><h3>Atendente por voz</h3><p>Você pergunta falando e ele responde falando: horário, endereço e preço dos lanches.</p><p class="tags">Web Speech API</p><p class="acoes"><a href="../atendente-por-voz/">Abrir</a></p></li>
+      <li class="projeto"><h3>Os mais vendidos da Amazon</h3><p>Análise dos 50 livros mais vendidos de cada ano, de 2009 a 2019.</p><p class="tags">Python · pandas · SVG</p><p class="acoes"><a href="../livros-mais-vendidos/">Abrir</a></p></li>
+      <li class="projeto"><h3>Pocket Rave</h3><p>Bateria eletrônica de 16 passos com o som gerado na hora.</p><p class="tags">Web Audio · canvas</p><p class="acoes"><a href="../pocket-rave/">Abrir</a></p></li>
+      <li class="projeto"><h3>Vitrine animada</h3><p>Quatro animações de produto feitas só com CSS.</p><p class="tags">CSS @keyframes</p><p class="acoes"><a href="../vitrine-animada/">Abrir</a></p></li>
+    </ul>
+  </section>
+
+  <section id="contato" class="secao" aria-labelledby="t-contato">
+    <h2 id="t-contato">Contato</h2>
+    <p>Quer um site ou um sistema para o seu negócio? Me chama.</p>
+    <!-- Coloque aqui o link do seu LinkedIn e do WhatsApp da empresa quando tiver -->
+    <p class="acoes"><a href="https://github.com/Engghgtytr">GitHub</a></p>
+  </section>
+</main>
+
+<footer class="rodape">© <span id="ano">2026</span> Enzo Penchel · Penchel.Dev</footer>
+<script>document.getElementById('ano').textContent = new Date().getFullYear();</script>
+</body>
+</html>

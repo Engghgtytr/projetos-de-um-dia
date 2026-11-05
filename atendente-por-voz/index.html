@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atendente por voz · Chapa Sete</title>
+<link rel="icon" href="data:,">
+<meta name="description" content="Assistente de voz que responde horário, endereço, cardápio e preços de uma hamburgueria fictícia, usando só o navegador.">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<main class="tela">
+  <header>
+    <p class="loja">Chapa Sete · Smash Burger <span class="aviso">loja fictícia</span></p>
+    <h1>Pergunte em voz alta</h1>
+    <p class="dica">Exemplos: "Vocês estão abertos?", "Quanto custa o bacon smash?", "Tem opção vegetariana?", "Onde fica?", "Qual a taxa de entrega?"</p>
+  </header>
+
+  <div class="microfone">
+    <button id="falar" type="button" aria-pressed="false">
+      <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M12 15a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-2.08A7 7 0 0 0 19 12h-2Z"/></svg>
+      <span>Toque e fale</span>
+    </button>
+    <p id="status" class="status" role="status">Pronto para ouvir.</p>
+  </div>
+
+  <form id="texto" class="texto">
+    <label for="pergunta">Ou escreva a pergunta</label>
+    <div class="linha">
+      <input id="pergunta" name="pergunta" autocomplete="off" placeholder="Ex.: tem batata?">
+      <button type="submit">Perguntar</button>
+    </div>
+  </form>
+
+  <ol id="conversa" class="conversa" aria-live="polite"></ol>
+
+  <footer class="rodape">Tudo roda no seu navegador (Web Speech API): a voz não vai para nenhum servidor nosso. Projeto de portfólio da Penchel.Dev. O reconhecimento de voz funciona no Chrome, Edge e Safari.</footer>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

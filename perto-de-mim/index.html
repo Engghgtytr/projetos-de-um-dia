@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perto de Mim · achar lugares no mapa</title>
+<link rel="icon" href="data:,">
+<meta name="description" content="Busque pizzarias, cafés, barbearias e oficinas de qualquer cidade no mapa, com dados abertos do OpenStreetMap, e veja quais ainda não têm site.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha384-c6Rcwz4e4CITMbu/NBmnNS8yN2sC3cUElMEMfP3vqqKFp7GOYaaBBCqmaWBjmkjb" crossorigin="anonymous">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<a class="pular" href="#resultados">Pular para os resultados</a>
+<header class="topo">
+  <h1>Perto de Mim</h1>
+  <p>Ache pizzarias, cafés, barbearias e oficinas de uma cidade e veja quais ainda <strong>não têm site</strong>.</p>
+</header>
+
+<form id="busca" class="busca" novalidate>
+  <label>O que procurar
+    <select name="tipo">
+      <option value="amenity=restaurant][cuisine~pizza">Pizzarias</option>
+      <option value="amenity=cafe">Cafés</option>
+      <option value="shop=hairdresser">Barbearias e salões</option>
+      <option value="shop=car_repair">Oficinas</option>
+      <option value="amenity=restaurant">Restaurantes</option>
+    </select>
+  </label>
+  <label>Cidade ou bairro
+    <input name="lugar" autocomplete="address-level2" placeholder="Ex.: Pinheiros, São Paulo" aria-describedby="erro-lugar">
+  </label>
+  <div class="acoes">
+    <button type="submit" class="primario">Buscar</button>
+    <button type="button" id="aqui" class="secundario">Usar minha localização</button>
+  </div>
+  <p id="erro-lugar" class="erro" hidden></p>
+</form>
+
+<main class="painel">
+  <section id="resultados" aria-live="polite" aria-busy="false">
+    <p class="vazio">Escolha o tipo, digite uma cidade e toque em <strong>Buscar</strong>.</p>
+  </section>
+  <div id="mapa" role="region" aria-label="Mapa dos resultados"></div>
+</main>
+
+<footer class="rodape">
+  Dados © colaboradores do <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, via Nominatim e Overpass.
+  O OpenStreetMap é feito por voluntários e pode estar incompleto. Projeto de portfólio da Penchel.Dev.
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha384-NElt3Op+9NBMCYaef5HxeJmU4Xeard/Lku8ek6hoPTvYkQPh3zLIrJP7KiRocsxO" crossorigin="anonymous"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pocket Rave · bateria eletrônica no navegador</title>
+<link rel="icon" href="data:,">
+<meta name="description" content="Bateria eletrônica de 16 passos feita com Web Audio, com uma telinha estilo OLED. Versão web do projeto Pocket Rave de Arduino.">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<main class="aparelho">
+  <header>
+    <h1>Pocket Rave</h1>
+    <p>Bateria eletrônica de 16 passos. Toque nos quadrados para ligar uma batida e aperte <strong>Tocar</strong>. É a versão web do projeto de Arduino com tela OLED: todo o som é gerado na hora com Web Audio, sem nenhum arquivo de áudio.</p>
+  </header>
+
+  <canvas id="oled" width="128" height="64" aria-label="Tela do aparelho: mostra a batida e o andamento" role="img"></canvas>
+
+  <div class="controles">
+    <button id="tocar" type="button" class="primario" aria-pressed="false">Tocar</button>
+    <label><span>Andamento: <output id="bpm-valor">120</output> BPM</span>
+      <input id="bpm" type="range" min="70" max="170" value="120">
+    </label>
+    <button id="limpar" type="button" class="secundario">Limpar</button>
+  </div>
+
+  <div id="grade" class="grade" role="grid" aria-label="Sequência de 16 passos"></div>
+
+  <footer>Use fone ou caixa de som. Projeto de portfólio da Penchel.Dev.</footer>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

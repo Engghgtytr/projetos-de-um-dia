@@ -1,0 +1,40 @@
+:root {
+  --fundo: #fbfaf7; --superficie: #ffffff; --tinta: #16181b; --tinta-2: #5d636b; --borda: #e2dfd8;
+  --acento: #1d4ed8; --acento-tinta: #ffffff;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --fundo: #111316; --superficie: #191c20; --tinta: #eceef0; --tinta-2: #a2a8b0; --borda: #2b3036;
+    --acento: #7aa2ff; --acento-tinta: #0b1430; color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--fundo); color: var(--tinta); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+a { color: var(--acento); text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--acento); outline-offset: 2px; }
+.pular { position: absolute; left: -999px; } .pular:focus { left: 16px; top: 16px; background: var(--superficie); padding: 8px 12px; }
+
+.topo, .secao, .rodape { max-width: 880px; margin: 0 auto; padding-inline: 16px; }
+.nav { display: flex; justify-content: space-between; align-items: center; padding-block: 20px; }
+.marca { font-weight: 700; color: var(--tinta); text-decoration: none; }
+.links { display: flex; gap: 20px; }
+.links a { color: var(--tinta-2); text-decoration: none; padding-block: 10px; }
+.links a:hover { color: var(--tinta); }
+
+.heroi { padding-block: 56px 48px; }
+.heroi h1 { font-size: clamp(2.25rem, 6vw, 3.5rem); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 16px; }
+.lead { font-size: 1.125rem; color: var(--tinta-2); max-width: 60ch; margin: 0 0 12px; }
+.botao { display: inline-block; margin-top: 12px; background: var(--acento); color: var(--acento-tinta); text-decoration: none; padding: 12px 20px; border-radius: 6px; font-weight: 600; }
+
+.secao { padding-block: 32px; border-top: 1px solid var(--borda); }
+.secao h2 { font-size: 1.5rem; margin: 0 0 4px; }
+.nota { color: var(--tinta-2); font-size: 0.9375rem; margin: 0 0 20px; }
+.projetos { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.projeto { background: var(--superficie); border: 1px solid var(--borda); border-radius: 8px; padding: 20px; }
+.projeto h3 { margin: 0 0 6px; font-size: 1.125rem; }
+.projeto p { margin: 0 0 8px; }
+.tags { color: var(--tinta-2); font-size: 0.875rem; }
+.acoes { display: flex; gap: 20px; flex-wrap: wrap; margin: 0; }
+.acoes a { padding-block: 10px; font-weight: 500; }
+.rodape { padding-block: 32px; color: var(--tinta-2); font-size: 0.875rem; border-top: 1px solid var(--borda); }

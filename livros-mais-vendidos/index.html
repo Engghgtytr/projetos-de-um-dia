@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livros mais vendidos da Amazon · análise com pandas</title>
+<link rel="icon" href="data:,">
+<meta name="description" content="Análise com Python e pandas dos 50 livros mais vendidos da Amazon de cada ano, de 2009 a 2019.">
+<style>
+  :root { --fundo: #f7f7f5; --superficie: #fff; --tinta: #1a1c1f; --tinta-2: #5e646c; --borda: #e1e1dc;
+    --s1: #2563eb; --s2: #d97706; color-scheme: light; }
+  @media (prefers-color-scheme: dark) { :root { --fundo: #131518; --superficie: #1b1e22; --tinta: #eceef0; --tinta-2: #a3a9b1; --borda: #2d3238; --s1: #6b9bff; --s2: #f0a840; color-scheme: dark; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fundo); color: var(--tinta); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 960px; margin: 0 auto; padding: 32px 16px; }
+  h1 { margin: 0; font-size: 2rem; letter-spacing: -0.01em; }
+  .sub { color: var(--tinta-2); max-width: 64ch; margin: 4px 0 24px; }
+  h2 { font-size: 1.25rem; margin: 32px 0 4px; }
+  .nota { color: var(--tinta-2); font-size: 0.875rem; margin: 0 0 12px; }
+  .fichas { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr)); }
+  .ficha { background: var(--superficie); border: 1px solid var(--borda); border-radius: 8px; padding: 14px 16px; }
+  .ficha span { color: var(--tinta-2); font-size: 0.875rem; }
+  .ficha strong { display: block; font-size: 1.625rem; font-variant-numeric: tabular-nums; }
+  .cartao { background: var(--superficie); border: 1px solid var(--borda); border-radius: 8px; padding: 16px; overflow-x: auto; }
+  .legenda { display: flex; gap: 16px; font-size: 0.875rem; color: var(--tinta-2); margin-bottom: 8px; }
+  .legenda i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: 0; }
+  svg text { fill: var(--tinta-2); font-size: 11px; font-variant-numeric: tabular-nums; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.9375rem; font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; padding: 8px; border-bottom: 1px solid var(--borda); }
+  th { color: var(--tinta-2); font-weight: 500; font-size: 0.8125rem; }
+  td.n, th.n { text-align: right; }
+  footer { color: var(--tinta-2); font-size: 0.8125rem; margin-top: 32px; }
+  a { color: var(--s1); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Os mais vendidos da Amazon</h1>
+  <p class="sub">Os 50 livros mais vendidos da Amazon em cada ano, de 2009 a 2019, analisados com Python e pandas. Os números saem do script <code>analisar.py</code>, nada foi digitado à mão.</p>
+
+  <section class="fichas" id="fichas" aria-label="Resumo"></section>
+
+  <h2>Ficção ou não ficção, ano a ano</h2>
+  <p class="nota">Quantos dos 50 livros de cada ano são de cada gênero. Não ficção ganhou em quase todos os anos.</p>
+  <div class="cartao">
+    <div class="legenda"><span><i style="background:var(--s1)"></i>Não ficção</span><span><i style="background:var(--s2)"></i>Ficção</span></div>
+    <svg id="grafico" role="img" aria-labelledby="grafico-titulo" width="100%" height="240"><title id="grafico-titulo">Livros de ficção e não ficção por ano</title></svg>
+  </div>
+
+  <h2>Autores que mais aparecem</h2>
+  <p class="nota">Vezes na lista (somando os anos) e quantos livros diferentes.</p>
+  <div class="cartao"><table id="autores"><thead><tr><th>Autor</th><th class="n">Vezes</th><th class="n">Livros</th></tr></thead><tbody></tbody></table></div>
+
+  <h2>Livros com mais avaliações</h2>
+  <div class="cartao"><table id="avaliados"><thead><tr><th>Livro</th><th>Autor</th><th class="n">Avaliações</th><th class="n">Nota</th></tr></thead><tbody></tbody></table></div>
+
+  <footer>Dados: <a href="https://www.kaggle.com/datasets/sootersaalu/amazon-top-50-bestselling-books-2009-2019">Amazon Top 50 Bestselling Books 2009–2019</a> (Kaggle). Preços em dólar, como na fonte. Projeto de portfólio da Penchel.Dev.</footer>
+</main>
+<script>
+const num = (v, d = 0) => v.toLocaleString('pt-BR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const linha = (...cel) => { const tr = document.createElement('tr'); cel.forEach(([t, n]) => { const td = document.createElement('td'); td.textContent = t; if (n) td.className = 'n'; tr.append(td); }); return tr; };
+
+fetch('resumo.json').then((r) => r.json()).then((d) => {
+  const fichas = [
+    ['Livros diferentes', num(d.livros_unicos)],
+    ['Nota média', num(d.nota_media, 2)],
+    ['Preço mediano', 'US$ ' + num(d.preco_mediano)],
+    ['Preço x nota (correlação)', num(d.correlacao_preco_nota, 2)],
+  ];
+  document.getElementById('fichas').append(...fichas.map(([r, v]) => {
+    const f = document.createElement('div'); f.className = 'ficha';
+    const s = document.createElement('span'); s.textContent = r;
+    const b = document.createElement('strong'); b.textContent = v;
+    f.append(s, b); return f;
+  }));
+
+  // Colunas agrupadas, desenhadas à mão em SVG
+  const svg = document.getElementById('grafico');
+  const NS = 'http://www.w3.org/2000/svg';
+  const desenhar = () => {
+    [...svg.querySelectorAll('g')].forEach((g) => g.remove());
+    const W = svg.clientWidth || 600, H = 240, base = H - 24, topo = 12, max = 40;
+    const g = document.createElementNS(NS, 'g'); svg.append(g);
+    const larg = W / d.por_ano.length;
+    const barra = Math.max(6, Math.min(24, larg / 2 - 4));
+    const y = (v) => base - (v / max) * (base - topo);
+    const s = (tag, a) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); g.append(e); return e; };
+    for (const v of [0, 20, 40]) { s('line', { x1: 0, x2: W, y1: y(v), y2: y(v), stroke: 'var(--borda)' }); s('text', { x: 0, y: y(v) - 3 }).textContent = v; }
+    d.por_ano.forEach((a, i) => {
+      const cx = i * larg + larg / 2;
+      [['nao_ficcao', 'var(--s1)', -barra - 1], ['ficcao', 'var(--s2)', 1]].forEach(([k, cor, dx]) => {
+        const r = s('path', { fill: cor, d: `M${cx + dx},${base} v${-(base - y(a[k])) + 4} q0,-4 4,-4 h${barra - 8} q4,0 4,4 v${base - y(a[k]) - 4} z` });
+        const t = document.createElementNS(NS, 'title'); t.textContent = `${a.ano}: ${a[k]} de ${k === 'ficcao' ? 'ficção' : 'não ficção'}`; r.append(t);
+      });
+      s('text', { x: cx, y: H - 6, 'text-anchor': 'middle' }).textContent = a.ano;
+    });
+  };
+  desenhar();
+  new ResizeObserver(desenhar).observe(svg);
+
+  document.querySelector('#autores tbody').append(...d.autores.map((a) => linha([a.autor], [num(a.vezes), 1], [num(a.livros), 1])));
+  document.querySelector('#avaliados tbody').append(...d.mais_avaliados.map((l) => linha([l.nome], [l.autor], [num(l.avaliacoes), 1], [num(l.nota, 1), 1])));
+}).catch(() => { document.getElementById('fichas').textContent = 'Não consegui carregar os dados. Rode analisar.py e abra por um servidor (python -m http.server).'; });
+</script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+{
+  "total_linhas": 550,
+  "livros_unicos": 351,
+  "anos": [
+    2009,
+    2019
+  ],
+  "genero_total": {
+    "Não ficção": 310,
+    "Ficção": 240
+  },
+  "nota_media": 4.62,
+  "preco_mediano": 11.0,
+  "gratis": 12,
+  "correlacao_preco_nota": -0.133,
+  "por_ano": [
+    {
+      "ano": 2009,
+      "ficcao": 24,
+      "nao_ficcao": 26,
+      "preco_medio": 15.4
+    },
+    {
+      "ano": 2010,
+      "ficcao": 20,
+      "nao_ficcao": 30,
+      "preco_medio": 13.48
+    },
+    {
+      "ano": 2011,
+      "ficcao": 21,
+      "nao_ficcao": 29,
+      "preco_medio": 15.1
+    },
+    {
+      "ano": 2012,
+      "ficcao": 21,
+      "nao_ficcao": 29,
+      "preco_medio": 15.3
+    },
+    {
+      "ano": 2013,
+      "ficcao": 24,
+      "nao_ficcao": 26,
+      "preco_medio": 14.6
+    },
+    {
+      "ano": 2014,
+      "ficcao": 29,
+      "nao_ficcao": 21,
+      "preco_medio": 14.64
+    },
+    {
+      "ano": 2015,
+      "ficcao": 17,
+      "nao_ficcao": 33,
+      "preco_medio": 10.42
+    },
+    {
+      "ano": 2016,
+      "ficcao": 19,
+      "nao_ficcao": 31,
+      "preco_medio": 13.18
+    },
+    {
+      "ano": 2017,
+      "ficcao": 24,
+      "nao_ficcao": 26,
+      "preco_medio": 11.38
+    },
+    {
+      "ano": 2018,
+      "ficcao": 21,
+      "nao_ficcao": 29,
+      "preco_medio": 10.52
+    },
+    {
+      "ano": 2019,
+      "ficcao": 20,
+      "nao_ficcao": 30,
+      "preco_medio": 10.08
+    }
+  ],
+  "autores": [
+    {
+      "autor": "Jeff Kinney",
+      "vezes": 12,
+      "livros": 12
+    },
+    {
+      "autor": "Rick Riordan",
+      "vezes": 11,
+      "livros": 10
+    },
+    {
+      "autor": "Suzanne Collins",
+      "vezes": 11,
+      "livros": 5
+    },
+    {
+      "autor": "Gary Chapman",
+      "vezes": 11,
+      "livros": 3
+    },
+    {
+      "autor": "American Psychological Association",
+      "vezes": 10,
+      "livros": 1
+    },
+    {
+      "autor": "Dr. Seuss",
+      "vezes": 9,
+      "livros": 2
+    },
+    {
+      "autor": "Gallup",
+      "vezes": 9,
+      "livros": 1
+    },
+    {
+      "autor": "Rob Elliott",
+      "vezes": 8,
+      "livros": 2
+    },
+    {
+      "autor": "Stephenie Meyer",
+      "vezes": 7,
+      "livros": 7
+    },
+    {
+      "autor": "Bill O'Reilly",
+      "vezes": 7,
+      "livros": 6
+    }
+  ],
+  "mais_avaliados": [
+    {
+      "nome": "Where the Crawdads Sing",
+      "autor": "Delia Owens",
+      "avaliacoes": 87841,
+      "nota": 4.8,
+      "genero": "Ficção"
+    },
+    {
+      "nome": "The Girl on the Train",
+      "autor": "Paula Hawkins",
+      "avaliacoes": 79446,
+      "nota": 4.1,
+      "genero": "Ficção"
+    },
+    {
+      "nome": "Becoming",
+      "autor": "Michelle Obama",
+      "avaliacoes": 61133,
+      "nota": 4.8,
+      "genero": "Não ficção"
+    },
+    {
+      "nome": "Gone Girl",
+      "autor": "Gillian Flynn",
+      "avaliacoes": 57271,
+      "nota": 4.0,
+      "genero": "Ficção"
+    },
+    {
+      "nome": "The Fault in Our Stars",
+      "autor": "John Green",
+      "avaliacoes": 50482,
+      "nota": 4.7,
+      "genero": "Ficção"
+    },
+    {
+      "nome": "The Nightingale: A Novel",
+      "autor": "Kristin Hannah",
+      "avaliacoes": 49288,
+      "nota": 4.8,
+      "genero": "Ficção"
+    },
+    {
+      "nome": "Fifty Shades of Grey: Book One of the Fifty Shades Trilogy (Fifty Shades of Grey Series)",
+      "autor": "E L James",
+      "avaliacoes": 47265,
+      "nota": 3.8,
+      "genero": "Ficção"
+    },
+    {
+      "nome": "The Martian",
+      "autor": "Andy Weir",
+      "avaliacoes": 39459,
+      "nota": 4.7,
+      "genero": "Ficção"
+    },
+    {
+      "nome": "All the Light We Cannot See",
+      "autor": "Anthony Doerr",
+      "avaliacoes": 36348,
+      "nota": 4.6,
+      "genero": "Ficção"
+    },
+    {
+      "nome": "The Alchemist",
+      "autor": "Paulo Coelho",
+      "avaliacoes": 35799,
+      "nota": 4.7,
+      "genero": "Ficção"
+    }
+  ]
+}
